@@ -1,0 +1,122 @@
+\addsection{Limited Human Causal Knowledge is About Interventions}
+\sectionauthor[]{Steven Sloman}
+\begin{affils}
+  \sectionaffil[]{Brown University}
+\end{affils}
+
+How can we elicit causal models from humans?
+In the first study, they ask people to assign functions to the parts of an object,
+e.g., a light source.
+Then, they ask people to provide causal rules that link the parts of an object.
+From this, they show a causal graph, in response to which the user can change their
+inputs.
+The effectiveness of the resultant causal models is measured in terms of the ability of
+a robot to construct the object from the model.
+The specific metrics used are the `hit rate', i.e., the proportion of causal
+connections elicited that match the ground truth, and the `false alarm rate', i.e., the
+proportion that don't appear in the ground truth.
+Finally, the performance of the robot is measured in terms of the number of steps saved
+in the assembly.
+The results indicate that people often fail to generate true causal relations but
+rarely generate false ones.
+There are problems with this methodology, e.g., it requires a long tutorial and takes a
+long time to complete, with the outcome that participants often failed to complete it.
+Moreover, the resultant causal models tend to be quite `flat', i.e., unsophisticated.
+In general, people didn't find the interface user-friendly.
+
+So, how else can we elicit causal models from people?
+A second method takes advantage of the intuitiveness of \emph{intervention}.
+In other words, what's the effect of a change like breaking the lightbulb?
+We ask people whether removing parts affects the functionality of other parts, and of
+the whole object (removal queries).
+If no, then there's a causal relationship between the two parts -- it's a
+counterfactual.
+However, this only really makes sense for small systems with relatively few parts.
+How can we infer causal models from these relationships?
+We start by determining a graph or adjacency matrix to represent all of them.
+From this, we can infer and underlying causal model by removing direct connections that
+are explained by indirect connections.
+That is, if $A$ affects $B$ and $B$ affects $C$, then we don't need the direct link
+between $A$ and $C$.
+This method improves the hit rates and slightly improves the false alarm rates, so it
+seems like the interventional approach to eliciting causal structure is more effective.
+We also gave the participants the functions in the second case.
+Working on combining the two in that way.
+The suggestion is that people do have access to causal knowledge, but it's interesting
+to think about the nature of its mental representation.
+The lack of success with the explicit graphical method suggests that people can't
+necessarily describe their causal knowledge, i.e., don't have access to it.
+This approach is explicitly linked with counterfactuality.
+
+`The knowledge illusion', or the illusion of explanatory depth.
+It seems like we should know the causal structure of simple objects!
+But people overestimate their understanding.
+Extending this observation to the domain of political policy, we find that a causal
+explanation reduces people's sense of understanding and their hubris, but simple
+reasoning doesn't.
+See \textcites{Rozenblit2002}{Fernbach2013}.
+With regard to scientific consensus, the more objective knowledge people have, the more
+they tend to agree with it.
+But we find the opposite correlation between \emph{subjective} knowledge and people's
+opposition to scientific consensus.
+Notably, we didn't find this effect for climate change, but we did for
+genetically-modified foods, gene therapy, childhood vaccination, and COVID-19.
+
+We can link these observations to decision-making strategies.
+We assume that we should take a \emph{consequentialist} or utilitarian approach -- in
+other words, the best decision is the one with the best consequences.
+This approach relates to causal or probabilistic beliefs.
+On this view, the role of causal models is to indicate the likely consequences of a
+decision.
+An alternative to the consequentialist approach is one based on \emph{sacred values}.
+These values are absolute, i.e., trade-offs based on the likely consequences are
+considered taboo.
+This approach relates to deontology, although there isn't necessarily an explicit
+theory from which the moral precepts are derived.
+This approach has a long history in Western thought, among others.
+It may be that sacred values arise from emotional responses rather than theoretical
+derivations.
+On this view, values refer to \emph{actions} rather than \emph{outcomes}.
+Value commitments can `fill in' causal gaps -- good leaders can take advantage of these
+values, e.g., to foster an ideological community based on a sense of outrage.
+
+The proposed model is to frame issues in one of two ways (sacred values versus
+consequentialism), which affects people's subjective understanding, which leads to
+either compromise or outrage.
+We find that subjective understanding increases aversion to compromise and tendency to
+outrage when sacred values are violated.
+See \textcites{Fernbach2018}.
+We present participants with a mock Reddit page with discussion on a topic, where
+opposing views are presented either in terms of sacred values or consequences.
+People have a higher sense of understanding when arguments are framed in terms of
+sacred values.
+Sacred-values frames also decrease people's willingness to compromise (perceived
+tractability), i.e., how likely it is that the parties could resolve their
+disagreement.
+In another study, we ask people to choose a reason for a policy using words from either
+of two sets that imply either a sacred-values or consequentialist frame.
+We then ask people to indicate their willingness to donate to a charity when it's
+framed that way.
+Generally, we find that the results follow the direction of the prediction -- people
+are more likely to be willing to donate, and to donate more, when they generate a
+reason for the policy based on sacred values.
+A meta-analysis of related studies finds a significant effect.
+We also look at companies that brand themselves in terms of sacred values versus those
+that don't (specifically, Patagonia and H\&M).
+Again, we ask people to write a reason for an argument based on different sets of
+terms, and find that changing the frame changes what people care about.
+
+In summary, people are bad at constructing causal models of everyday objects.
+People can, however, answer questions about the effects of interventions.
+Decision-making by sacred values is relatively common, and sacred-values frames
+increase subjective understanding, reduce perceived tractability, and increase
+willingness to act.
+
+\paragraph{Questions}
+Are we talking about the same kind of causal reasoning in the two projects?
+The inferred models make a big assumption in terms of causal theory.
+It's clear that people create too many causal relations in the original graphs, and
+it's less clear how we could infer a simpler (more correct) causal model without
+eliminating direct connections that are explained by direct connections.
+When do people revert to a greater level of detail?
+It's also assumed that people are generally the same.

@@ -1,0 +1,62 @@
+\addsection{Causal Cognition via String Diagrams}
+
+\sectionauthor[]{Sean Tull}
+\begin{affils}
+  \sectionaffil[]{Quantinuum}
+\end{affils}
+
+Formal aspects of causal models and reasoning.
+Particularly how we can model them using string diagrams (category theory).
+\citetitle{Lorenz2023a} \parencites{Lorenz2023a};
+\citetitle{Tull2023} \parencites{Tull2023}.
+Builds on a lot of developments in applied category theory.
+
+Introduction to string diagrams.
+Monoidal category, e.g., $\textbf{Mat}_{\mathbb{R}+}$.
+Depiction of a probabilistic process $M : X \to Y$.
+A channel when normalized for each input.
+Turn probability theory into pictures.
+Sequence (summing over) versus parallel (independent).
+Copy and discard (marginalize over) variables.
+
+A causal model would usually be represented by, e.g., a Bayesian network (DAG).
+As diagrams.
+DAG with chosen observed vertices is equivalent to a network diagram with no inputs.
+A causal model in $\mathcal{C}$ is an interpretation of such a diagram as channels in
+$\mathcal{C}$.
+Causal model is a diagram in a certain category.
+Generalize to other categories.
+Why this description?
+In the previous account, you have a DAG and probability theory and switch between them.
+With the diagrams, you can do a lot with just diagrams, i.e., the same formalism.
+Natural way to study causal models.
+
+Interventions -- modifications of the mechanisms of the model.
+E.g., a do-intervention setting some variable, replacing mechanism with fixed value.
+Equivalent to probability distribution over variables before/after intervention.
+Or, e.g., policy that changes the process.
+
+Counterfactuals.
+Need more than a Bayesian network: a functional causal model.
+Deterministic channels (functions) and hidden exogenous variables.
+Background conditions that lead to randomness of model.
+Another diagram that describes the distribution, the actual world is conditioned on
+what happens, plus an imaginary world with the alternative.
+Normalization over the rest to get an actual distribution.
+`All else the same': exogenous variables fixed.
+Generalize to definition of counterfactuals in terms of string diagrams.
+
+E.g., active inference -- agent uses a causal generative model.
+Observations and future observations, states and future states, action policies, and
+habits.
+Framework in AI and cognitive science.
+Update process to future actions, based on observation and future preferences.
+Updating prior over habits?
+Pearl-style updating (or Bayesian).
+Can't do this exactly, so want to approximate via free energy.
+
+\paragraph{Questions}
+
+Causal and other compositional models may help interpretability in AI.
+More general concept.
+Is the epistemic status of the two parallel worlds represented in the model?

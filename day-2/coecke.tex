@@ -1,0 +1,148 @@
+\addsection{Quantum Causality in Pictures: Everyone Can Do It!}[Quantum Causality in Pictures]
+
+\sectionauthor[]{Bob Coecke}
+\begin{affils}
+  \sectionaffil[]{Quantinuum, University of Oxford}
+\end{affils}
+
+\subsection*{Introduction}
+
+Quantinuum's Oxford office has 40--50 people working on `compositional intelligence'
+and quantum-inspired and -enabled systems.
+The principle of \emph{compositionality} is typically attributed to Frege, but it goes
+back to Boole.
+Fregean compositionality is `bottom-up': the meaning of the whole is determined by the
+meanings of its parts.
+We use it in a more general sense, which we haven't yet precisely defined.
+Compositionality encompasses different variants of causality.
+See, for example, \textcites{Kissinger2017}{Cho2019}{Schmid2020}{Lorenz2023}.
+Causality isn't solely the story of \emph{interactive relationships}, but they're
+important.
+In this talk, we'll discuss examples: humans reasoning about quantum processes, and
+quantum machines performing human-like cognition.
+
+\subsection*{Quantum mechanics}
+
+The typical formalism of quantum mechanics today is due to von Neumann (1932).
+As soon as 1935, von Neumann stated that he didn't believe in Hilbert space
+\parencites{Redei1996}.
+He explored other formalisms, which he considered as failures, despite making various
+advances in mathematics in the process.
+In 1935, Schr\"odinger stated that interaction (interference) was the characteristic
+trait of quantum mechanics.
+Whereas people usually start talking about quantum mechanics in terms of
+\emph{measurement}, Schr\"odinger took a different view.
+Coecke's \citetitle{Coecke2006} \parencites*{Coecke2006} interpreted Schr\"odinger's
+view in terms of Penrose-like diagrams, which Penrose invented to perform tensor
+calculations.
+This approach is described in \citetitle{Coecke2017} \parencites*{Coecke2017}, which is
+taught at Oxford.
+\citetitle{Coecke2023} \parencites*{Coecke2023} contains the same material, but without
+any mathematics.
+There are accompanying videos on YouTube.
+The following slides are a rapid overview of several chapters of the book.
+
+\subsection*{Wires and boxes}
+
+The combination of wires and boxes suffices to describe symmetric monoidal categories.
+This is an incarnation of Schr\"odinger's idea of composing things, i.e., `plugging'
+systems into each other.
+`Cup' and `cap' boxes are special types of boxes, which we can introduce by `bending'
+existing wires in the diagram.
+A cup is a \emph{state}, i.e., something we can do something with.
+With two wires coming out of it, it's a two-state system, which is called an entangled,
+Bell, or EPR state in quantum mechanics.
+The combination of a cup and cap box is equivalent to a plain wire, which doesn't do
+anything.
+We can also move boxes around wires, which explains quantum teleportation.
+Creating two particles and moving them apart `creates the wire'.
+
+section 2: spiders are all you need.
+What can you do with a wire?
+If you connect two wires, you get another wire.
+A spider has $n$ wires in and out.
+Again, you can combine or split them.
+Like connecting multi-plugs.
+Spiders of different colours: wires between them cancel out.
+Only need two colours.
+Quantum circuits/programs -- that you stick in a quantum computer to do computations.
+The vertical wires are like qubits.
+Spiders connected together are like gates.
+Simplified circuit based on collapsing spiders and wires.
+
+Measurement.
+Quantum is especially about the connection between classical and quantum worlds.
+What people always talk about: measurement about a way to go from quantum to classical
+world.
+Quantum as two wires and classical as one wire -- measurement.
+The other way around is encoding.
+If you combine the two operations, nothing happens.
+But if the colours of the spiders are different (position and momentum), you chop out
+the legs.
+No legs between them means they're independent.
+E.g. repeated measurements.
+
+Translated the formalism of QM into string diagrams.
+Neural about the ontology or philosophy of it.
+Well, the ontology is relational and process-based.
+Away from Democritus and towards Heraclitus.
+
+Not just illustrational but computational tools.
+Is this language closer to the way we think?
+Lots is first-order topological?
+
+\subsection*{DisCoCat}
+
+When presenting this work at a Quantum Interaction symposium, Joachim Lambek
+immediately pointed out that diagrams of this kind correspond to \emph{grammar}.
+This formed the basis of the categorical compositional distributional semantics
+framework, abbreviated as DisCoCat \parencites{Clark2008}{Coecke2010}.
+Mehrnoosh Sadrzadeh knew about the mathematics of grammar, Stephen Clark knew about
+distributional semantics, and Bob Coecke had developed the diagrammatic formalism for
+quantum foundations.
+The framework presents a way to combine grammar and meaning representations.
+This common `quantum language' or structure is about interactive relationships -- in
+quantum theory, the `magic' comes from systems interacting; in language, it comes from
+meanings interacting.
+These phenomena aren't fully captured by a traditional view of causality.
+For example, in quantum theory, relativistic causality doesn't produce a probabilistic
+causal model.
+Likewise, it doesn't make sense in language, which doesn't represent traditional causal
+relations.
+As above, the idea of compositionality goes beyond the Fregean idea -- information
+flows down, as well as up.
+In a sense, this is comparable to the transition from Wittgenstein's early to later
+philosophy -- it moves from a reductionist, positivist approach to a context-based one.
+
+\subsection*{Quantum NLP}
+
+The computational demands of quantum compositional structure increases exponentially,
+which makes it difficult to scale up language models.
+\citetitle{Zeng2016} \parencites*{Zeng2016} introduced a \emph{quantum} algorithm for
+natural language processing, which demonstrates a quantum advantage for the example
+task of computing word similarity.
+This is performed with the \texttt{lambeq} library \parencites{Kartsaklis2021}, which
+you can try out online via IBM quantum computers.
+\textcites{Miranda2021} apply the same framework to music, instead of grammar.
+But we need to go beyond sentences to represent text more generally.
+\citetitle{Coecke2020} \parencites{Coecke2020} introduces \emph{text circuits} as a new
+theory of language, `distilling text into circuits'.
+We find that differences in word order, phrasing, and language disappear when we
+represent text in terms of circuits.
+We might therefore hypothesize that circuits are closer to mental representations and
+processes than text and speech, which are linear.
+
+\subsection*{Questions}
+
+Some key advantages of traditional, predictive language models is that they learn both
+syntactic and semantic information, which makes them flexible in terms of being able to
+model phenomena like semantic change.
+In this formalism, you need to specify the grammatical structure of phrases, whereas
+phrases are not always grammatical (and grammar may evolve over time).
+As it stands, the formalism represents a fragment of the reality of language use.
+Also, they find that context-dependence `saturates' at a certain point, i.e., you don't
+need the entirety of the context to capture context-dependent effects, only a subset of
+it.
+This potentially opens the way to more scalable models, by considering subsets of the
+text for training on classical machines, and performing inference on the whole,
+compositional structure on quantum machines, where the advantage is necessary.

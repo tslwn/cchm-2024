@@ -1,0 +1,146 @@
+\ProvidesPackage{cchm}
+
+% Page layout
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  margin={1in,1in},
+}
+\usepackage{setspace}
+% \onehalfspacing
+
+% Typography
+% https://ctan.math.washington.edu/tex-archive/fonts/etbb/doc/ETbb-doc.pdf
+\usepackage[p]{ETbb}
+\usepackage[scaled=.95,type1]{cabin}
+\usepackage[varqu,varl]{zi4}
+\usepackage[T1]{fontenc}
+\usepackage[libertine,vvarbb]{newtxmath}
+\usepackage{microtype}
+\frenchspacing
+
+% Bibliography
+\usepackage[
+  style=authoryear,
+  maxcitenames=2,
+  doi=false,
+  isbn=false,
+  backend=bibtex,
+]{biblatex}
+
+\addbibresource{~/library.bib}
+
+% Map @misc to @online
+\DeclareSourcemap{
+  \maps[datatype=bibtex, overwrite=true]{
+    \map{
+      \step[typesource=misc, typetarget=online]
+    }
+  }
+}
+
+\AtEveryBibitem{%
+  \clearlist{language}%
+  \clearfield{month}%
+  \clearfield{note}%
+  \clearfield{eprint}%
+  % Omit "Visited on <date>"
+  \iffieldundef{urlyear}
+  {}
+  {\clearfield{urlyear}}
+}
+
+% References
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Theorem environments
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Figures
+\usepackage{tikz}
+
+% Authors and affiliations
+\usepackage{authblk}
+
+\newif\ifnewauthor
+\newauthortrue
+
+\newcounter{affils}
+
+\makeatletter
+\def\sectionauthor[#1]#2{\ifnewauthor\else, \fi
+  #2\foreach \x [count=\xi] in {#1}{
+      \ifnum\xi=1\textsuperscript{\x}
+      \else\textsuperscript{, \x}
+      \fi
+    }
+  \ifnewauthor\newauthorfalse\gdef\sectionauthors{#2}\else
+    \g@addto@macro\sectionauthors{, #2}\fi
+  \ignorespaces
+}
+\makeatother
+
+\def\sectionaffil[#1]{\item[#1]
+  \refstepcounter{affils}
+}
+
+\usepackage{xparse}
+
+\makeatletter
+\let\oldsection\section
+\RenewDocumentCommand{\section}{s o m}{% \section*[<opt>]{<man>}
+  \IfBooleanTF{#1}
+  % \section*
+  {\IfValueTF{#2}
+    % \section*[..]{...}
+    {\oldsection*{#3}
+      \markboth{#2}{}
+    }
+    % \section*{...}
+    {\oldsection*{#3}}}
+  % \section
+  {\IfValueTF{#2}
+    % \section[..]{...}
+    {\oldsection[#2]{#3}}
+    % \section{...}
+    {\oldsection{#3}}}
+}
+\makeatother
+
+\usepackage{enumitem}
+
+\newenvironment{affils}
+{
+  \addtocontents{toc}{\sectionauthors\string\par}
+  \it
+  \begin{enumerate}[leftmargin=0pt]
+    }
+    {
+  \end{enumerate}
+  \global\newauthortrue}
+
+% Add a chapter
+\NewDocumentCommand{\addchapter}{m}{
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+}
+
+% Add a section
+\NewDocumentCommand{\addsection}{m O{#1} O{#1}}{
+  \section*[#2]{#1}
+  \addcontentsline{toc}{section}{#3}
+}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage[titles]{tocloft}
+\renewcommand{\cftchapafterpnum}{\vspace{\cftbeforechapskip}}
+\renewcommand{\cftsecafterpnum}{\vspace{\cftbeforesecskip}}

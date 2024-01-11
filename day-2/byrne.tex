@@ -1,0 +1,199 @@
+\addsection{How Counterfactual Explanations Affect People's Understanding of an AI System's Decisions}[Counterfactual Explanations and AI Decisions]
+
+\sectionauthor[]{Ruth Byrne}
+\begin{affils}
+  \sectionaffil[]{Trinity College Dublin}
+\end{affils}
+
+`If only' thoughts: we mentally simulate how things could have turned out differently,
+usually after bad outcomes.
+Counterfactual possibilities help us to explain the past, and to work out some causal
+relations.
+Partly, that helps us to prepare for the future, learn from mistakes, form intentions,
+and make decisions.
+`Zooming in' on potential causes for outcomes.
+E.g., \textcites{Kahneman1982}{Roese2017}{Byrne2016}.
+I'm going to focus on the explanatory aspects.
+We understand a lot about how people reason about counterfactuals but comparatively
+less about how they explain them.
+There's been an explosion of interest in counterfactuals in AI, e.g., there are more
+than 100 computational methods to generate them.
+It's surprising as a cognitive scientist that there's a lack of empirical evidence with
+human users.
+Of 120 XAI counterfactual papers, less than 20\% included test human users, and many of
+these were informal.
+E.g., \textcites{Wachter2017}{Karimi2020}{Keane2021}.
+`How people reason with counterfactual explanations for decisions'.
+E.g., \textcites{Warren2023}.
+Specifically, with respect to decisions made for people by AI systems.
+Three strands of research (see subheadings).
+
+\subsection*{Are counterfactual explanations better than causal ones?}
+
+Causal explanations are the dominant form in XAI whereas counterfactuals are newer.
+Would you expect them to be better?
+There's an assumption of a close relationship between counterfactual and causal
+explanations.
+Some recent studies have shown differences between them.
+The contents of counterfactual thoughts don't necessarily match causal ones.
+Exceptionality bias: return to normal rather than abnormal behaviours.
+Drunk driver caused a crash rather than `if only they had driven by a different route'.
+Argued that causal thoughts focus on strong causes (necessary and sufficient), whereas
+counterfactuals focus on enabling.
+Difference in mental representations: dual versus single possibilities.
+Recover the pre-supposed or known facts.
+Causally, people are initially just thinking about the causal link, rather than what
+did happen and what's supposed could have happened.
+E.g., \textcites{Kahneman1982}{Mandel1996}, Byrne and Deighan (2023), in prep.
+
+What do people think about immediately, given causal or counterfactual explanations?
+Short stories that people hear with some quadrants in front of them, with images or
+text.
+Wear headsets that determine where people's eyes move among these quadrants.
+Where people look gives them a clue about what they're thinking.
+Interested in how different mental representations are vindicated by this.
+Once people hear `roses', their eyes move to the part of the screen with `roses' on it.
+Picture is very different for counterfactuals: become interest in either roses or no
+roses.
+Alternating between those two quadrants.
+So we want to argue that they're thinking about those two possibilities from the
+outset, i.e., counterfactuals are represented in different ways.
+Richer mental representations, so require more cognitive resources
+\parencites{McEleney2006}.
+
+See \textcites{Celar2023}{Warren2023}{Dai2022}.
+E.g., user interface that shows either causal or counterfactual explanations for an
+outcome given input variables.
+Perturb action decisions until they cross the boundary and then generates a
+counterfactual.
+People judge counterfactual explanations as more helpful.
+Rate satisfaction with explanation and overall trust in application (1-5 or Hoffman
+scale) We also measured whether counterfactuals actually help people by asking people
+to predict given new input variables.
+Found that counterfactuals were no more helpful than causal ones.
+People feel like they're being given a better explanation, but it's not necessarily
+helping them more.
+This raises questions about fairness and trust.
+Conclusion: `People prefer counterfactual explanations, but accuracy improves with
+either'.
+
+\subsection*{Do people prefer simple counterfactual explanations?}
+
+Explanatory virtues: e.g., simplicity and breadth.
+Simplicity is favoured in XAI, e.g., sparsity.
+E.g., \textcites{Lombrozo2007}.
+Most satisfying explanation was overwhelmingly the simple one: i.e., a single cause
+rather than two independent ones.
+See also \textcites{Liefgreen2023}{Stephan2023}{Johnson2019} There are some domains,
+e.g., legal, where people prefer a more complex or thorough explanation.
+What about counterfactuals, with the same scenario?
+Reformulate the same explanations as both causal and counterfactuals.
+Do people prefer the simple one in counterfactual as well as causal?
+Why is simplicity preferred?
+E.g., as a proxy for probability -- if the causes are rare, then one is more likely
+than two -- you wouldn't predict a difference between causal and counterfactual.
+Alternatively, simplicity from representational elegance: easy to consider the common
+cause as opposed to multiple causes.
+Less simplicity preference for counterfactuals, because they require that you're
+thinking about what might have happened already.
+Dai, Keane and Byrne (in prep) reproduce \textcites{Lombrozo2007}, but find a smaller
+effect for counterfactual explanations than causal explanations.
+
+People prefer simple explanations when they diagnose causes from known effects.
+AI systems make diagnoses, e.g., medicine, machine faults, cybersecurity.
+But they also make predictions, e.g., credit risk, turnover, weather.
+Do people also prefer simple explanations when they predict effects from known causes?
+I.e. common effect rather than multiple effects.
+Warren, Keane, and Byrne (in prep) again find a simplicity bias for diagnostic
+inference and a less strong one for prediction.
+How do people reason about continuous and categorical variables, i.e., not just binary.
+Analogous scenario with diagnostic and predictive tasks.
+Find the same bias towards simple explanations, with a significant difference between
+causal and counterfactual explanations.
+
+\subsection*{Do counterfactuals for AI decisions lead people to switch from risky to
+  safe choices?}
+
+We chose example where people are well-known to predict safety versus risk, taken from
+\textcites{Kahneman1982}, who found that people choose the `safe bet'.
+Contrast with people die rather than people are saved -- when losses are in prospect,
+people take the chance.
+People are risk-averse for gains, but risk-seeking for losses.
+What if an AI system recommends the atypical option, i.e., the one that people don't
+tend to choose?
+Only apply to participants who make the typical choice.
+People are blamed more if they make the atypical choice and things go wrong.
+
+Dai, Keane, Shalloo, Ruelle, and Byrne in prep.
+What percentage of people make the switch?
+AI is more likely to persuade people to make a sure decision than a risky one.
+The counterfactual explanation increases the likelihood of persuading in both cases.
+Different when people tell you to do things, i.e., a medical expert rather than an AI
+system.
+The implication is that an AI recommendation needs to be explained for people to follow
+it.
+
+\paragraph{Questions}
+
+Same content in a different linguistic expression, what about linguistic/cultural
+background?
+How generalizable are these findings?
+Native English-speaking and resident in a predominantly English-speaking country.
+People tend to both causally and counterfactually explain things but generate more
+causal explanations, because they're easier.
+Does language have a big impact on counterfactual thinking?
+Have found similar things with other European languages.
+Previously, there was a view in the West that there was no way to express
+counterfactuals in a Chinese language.
+That's not true, but the linguistic markers for counterfactuals aren't used very often.
+Also found there didn't seem to be a difference in the inferences people made, but the
+expressions were more cumbersome.
+Interested in individualistic cultures (e.g. American) but again there doesn't seem to
+be a difference.
+But there are cultural differences.
+Particularly when judging others' decisions, guided by norms in society.
+
+Is it negation or extra information that causes the difference between the
+explanations?
+Can use implicit negations, find similar results.
+In the 1970s, people tended to remember the opposite of the counterfactual.
+Anchor counterfactual imagination in reality.
+Does negation require symbols to be represented, or is it represented in terms of the
+alternative?
+Analogy to blood-alcohol example that's unfamiliar to people.
+People find explanations less helpful in an unfamiliar domain.
+Performance improves a bit but not much.
+
+Conversational implicature, Bryce.
+Someone's telling you something, there must be a reason for that.
+Conjunction fallacy, people think that you're saying `bank teller only'.
+Conditional reasoning literature - invited inferences.
+Two prominent viewpoints: possibilities and mental models versus figuring out prior
+beliefs with probability calculation.
+Think neither depends heavily on implicatures.
+How much can we explain with just reasoning instead of also linguistic overlay?
+
+Framing problem with explanations.
+Degree to which people accept an explanation depends on framing.
+Implications for XAI program: if everything's explainable then it's safe.
+Are you trying to explain the global system, the domain it somehow encodes, or just a
+local explanation for a decision?
+Are you just trying to justify a decision?
+When people have knowledge, no effect for correct answer, but helps with atypical one.
+XAI: difficulty of prediction being made in people's understanding.
+Benefit of explanation disappears often when you have a material set that's easier,
+i.e., people can already get the answer and the explanation's redundant.
+How do explanations get turned off and on?
+People are intolerant of errors, i.e., expect decision to be correct.
+Trust gets undermined quite quickly.
+
+Philosophical: counterfactual versus conserved-quantity view.
+Causation transfers something from cause to effect.
+Psychological literature suggests that in physical systems, people think more about the
+latter.
+Does that distinction explain some of the differences?
+How are mechanistic explanations represented?
+Mechanism, intentionality, other explanations.
+What kinds are people especially persuaded by in social domains.
+Have mostly looked at AI helping to make certain decisions.
+Especially used to assume other people's perspectives.

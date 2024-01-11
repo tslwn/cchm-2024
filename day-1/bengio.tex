@@ -1,0 +1,161 @@
+\addsection{Amortized Inference of Bayesian Causal Models for Quantitative AI Safety
+  Guarantees}[Quantitative AI Safety Guarantees]
+
+\sectionauthor[]{Yoshua Bengio}
+\begin{affils}
+  \sectionaffil[]{Université de Montréal}
+\end{affils}
+
+The content of this talk represents the intersection of a more recent interest in AI
+safety, and a long-standing interest in bringing high-level human cognitive abilities
+to machines.
+These abilities are missing in the state-of-the-art.
+The aim is to create AI systems with \emph{epistemic humility}, i.e., knowing what they
+don't know, and quantitative safety guarantees.
+How can we avoid catastrophic outcomes from AI?
+We need to solve the \emph{alignment} and control problem, which is technical and
+political (due to the costs of research and development).
+There's also the \emph{coordination} challenge: making sure safe and ethical protocols
+are followed, and preparing for a situation in which a `rogue' AI emerges anyway.
+This is a socio-technical challenge -- even if we knew how to make AI safe, how would
+we get people to do it?
+Today is mostly about the technical aspects.
+
+Statistically, the true and estimated objective or reward functions may appear similar
+on a random test set.
+But maximizing the estimated reward function is likely to reveal the greatest
+mismatches between the true and estimated rewards!
+This happens empirically, and the difference can be very large.
+In a sense, we want the system to `know' that what it's optimizing `isn't the real
+thing' and that there's some uncertainty about the true objective.
+We need CIRL-like solutions -- human intentions are a latent variable.
+Reinforcement learning leads to `reward hacking' with lots of compute.
+\textcites{Cohen2022} -- optimizing a policy to maximize expected reward necessarily
+leads to reward hacking as compute increases.
+In the extreme case, advanced artificial agents could intervene in the provision of
+reward.
+In other words, if we tried to interfere with how the system was rewarded, then it
+could try to stop us.
+This is a problem with maximum-likelihood models.
+They may be confidently wrong (hallucinate).
+It doesn't happen too often, but it's a concern if the potential outcomes are severe.
+Optimizing for maximum-likelihood discovers `fantasy treasures', and doesn't provide
+any quantitative safety guarantees.
+
+For some time, I have been a proponent of end-to-end AI training.
+But there's no explicit world model or ability to plan, which humans have.
+An idea is to separate an inference engine, which can answer questions in natural
+language, and the model itself.
+The optimal capacity of the model is far less than the optimal capacity of the
+inference engine.
+For instance, the causal rules that define the game of Go are very simple, but the game
+requires a very large machine-learning model to make causal inferences.
+Typically, end-to-end deep learning confounds both of these parts: it overfits the
+world model and under-fits the inference engine.
+Moreover, it doesn't trivially offer a way to incorporate \emph{inductive biases}.
+I think of causality as an inductive bias.
+We can constrain how an AI system understand the world by encoding some mathematical
+properties of causality and interventions that restrict the distributions that can
+occur in the world.
+In terms of `system-1' and `system-2' thinking, deep learning is doing well at the
+first, but not at the second.
+It's not great at deliberation, planning, reasoning, etc.
+
+A causal
+model is joint over variables and interventions -- it's a family of distributions over
+variables, which are indexed by interventions.
+They all share parameters.
+The idea is that generalization over possible interventions may equate to
+out-of-distribution generalization (to distributions that correspond to unseen
+interventions).
+Causal dependencies have special constraints: the causes are marginally independent,
+and interventions are special causes that change the mechanism to ignore or modulate
+the other causes of an outcome.
+The actions of agents lead to interventions.
+Latent dynamics in the world can lead to cyclic dependencies.
+Markov equivalence class (MEC) of causal models.
+Even with an infinite amount of data, still can't determine the right causal graph.
+Finitude of interventional and observational data.
+Bayesian posterior over causal models.
+Need to understand that there are multiple explanations for the data we're seeing.
+For humans, we call that \emph{epistemic humility}.
+
+Bayesian posteriors for safe uncertain decisions.
+Maximum likelihood means choose whichever theory.
+If you know that the theories coexist, and you don't know which is correct, then you
+can avoid catastrophic consequences for actions.
+Reject action if probability of harm given an action, data, context, is greater than
+some threshold.
+How can we efficiently estimate these Bayesian posterior probabilities conservatively?
+We can't afford to underestimate it, so we need to make sure we make errors in the
+right direction.
+The gold-standard for Bayesian calculations uses Markov chain Monte Carlo simulation.
+We think of the distribution as over theories about the data -- if that distribution
+has many modes, which will be the case, we have the `mixing problem'.
+We can explore trajectories by making small changes to hypotheses (sample).
+How do you get between modes?
+It's exponentially difficult.
+This happens in practice in high-dimensional spaces.
+
+We want increasing compute to increase safety -- MCMC works in principle but doesn't
+scale.
+Neural-network amortized inference approaches the Bayesian posterior over causal models
+as the network size and training time increase.
+We need neural networks that can represent rich Bayesian posteriors.
+We have a forthcoming paper about variational approaches (forthcoming).
+The correct calculations, inferences, etc. will be intractable, but we can approximate
+them with a neural network.
+This exploits mathematical results that tell us that the larger the network and the
+longer the training, the closer we approximate the true distributions.
+
+Why rich amortized predictors?
+Compositional so exponential number of models, and it's difficult to mix modes with
+MCMC.
+Traditional variational inference produces a single mode-seeking approach.
+Machine-learning predictors can generalize from small fraction of visited modes by
+exploiting generalizable structure.
+Generative Flow Networks (GFlowNets) implicitly marginalize over models -- amortized
+predictors are fast at run-time, i.e., we pay up front for training, but inferences are
+cheap.
+Intersection of RL and variational methods: the policy they learn stochastically
+samples proportional to the reward function, i.e. the more rewarded a theory is, the
+more it's sampled.
+By Bayes's rule, we learn the Bayesian posterior.
+See \textcites{Deleu2022,Deleu2023}.
+How can we enforce interpretability?
+E.g., by autoencoding-like losses.
+We want to produce explanations in something like natural language, and to be able to
+use human theories.
+The theories that you care about most are the ones that could produce harmful results.
+We can use losses to provide confidence intervals.
+
+\paragraph{Questions}
+
+\begin{itemize}
+  \item Probabilistic programming methods aren't new -- why now?
+        Originally thought it was hopeless because intractable, but GFlowNets changed that.
+        Have a neural network generate the program from the set of programs that explain the
+        data.
+  \item What types of representations?
+        This is a neural network that generates hypotheses and answers to questions.
+        Current LLMs do that, but they're not `trained right'.
+        We don't care too much about the specific representations.
+  \item Formal methods, logic arising from natural language, theorem-proving.
+        Mathematical propositions, etc. are `shortcuts': they save us a lot of compute.
+        There are models at different levels -- it's intractable, for example, to model
+        macro-scale behaviour based on quantum theory, due to the computation required.
+        We can think of pure maths as an abstract thing that searches for compact ways of
+        expressing relationships.
+  \item A limitation of probability theory is that it struggles to represent ambiguity.
+        It's hard to come up with a single definition of `war', for example, but could have a
+        rich distribution over possible definitions -- thus the Bayesian approach.
+        Not just probabilistic but Bayesian about everything that the AI observes.
+  \item What about other forms of cognition, i.e., not just verbal and mathematical?
+        We're good at generating images but not `object-centric' vision.
+  \item What assumptions do GFlowNets make about the underlying data?
+        We want to avoid assumptions.
+        A lot of previous work assumed that the posterior distribution would be uni-modal, but
+        we want to represent arbitrary distributions.
+        E.g., the space of programs is infinite, but you generally want shorter ones.
+        Don't want to limit to a particular parametric form.
+\end{itemize}

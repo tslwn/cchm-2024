@@ -1,0 +1,50 @@
+\documentclass[11pt,oneside]{book}
+\usepackage{cchm}
+
+\begin{document}
+
+\newcommand{\authortext}{Tim Lawson}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\authortext}
+\fancyfoot[C]{\thepage}
+
+\title{Causal Cognition in Humans and Machines:
+  \\
+  Intelligence and Intelligent Systems}
+\author{\authortext}
+\affil{\href{mailto:tim.lawson@bristol.ac.uk}{\texttt{tim.lawson@bristol.ac.uk}}}
+\date{University of Oxford
+  \\
+  11--12 January 2024}
+
+\maketitle
+\tableofcontents
+
+\addchapter{Thursday 11 January 2024}
+
+\input{day-1/sloman}
+\input{day-1/kleinberg}
+\input{day-1/leijnen}
+\input{day-1/veloz}
+\input{day-1/bengio}
+\input{day-1/raimondi}
+\input{day-1/kleiner}
+
+\addchapter{Friday 12 January 2024}
+
+\input{day-2/byrne}
+\input{day-2/thomas}
+\input{day-2/dundar}
+\input{day-2/tull}
+\input{day-2/sergeant-perthuis}
+\input{day-2/coecke}
+\input{day-2/jacobs}
+\input{day-2/hedges}
+\input{day-2/kuhn}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,82 @@
+\addsection{Causal AI for Actionable Decision-Making}
+
+\sectionauthor[]{Francesca Raimondi}
+\begin{affils}
+  \sectionaffil[]{causaLens}
+\end{affils}
+
+This talk covers causality for decision-making, discovery, model discovery, industry
+applications (especially healthcare), fairness, etc. There has been an uptick in the
+popularity of causal AI, e.g., the Nobel prize in economics in 2021.
+Causal graphs, confounders and spurious correlations.
+Confounders affect both outcome and treatment.
+Spurious correlations aren't true drivers of the outcome and can make estimates of the
+treatment effect worse.
+We really care about the \emph{causal} question of, e.g., taking the COVID vaccine.
+This doesn't have a mathematical formulation in classical statistics.
+Instead, use `do-calculus' or interventional statistics.
+Traditionally, decision-making with AI was just collecting data, building a black-box
+model, and coming up with post-hoc explanations.
+This doesn't address the above but also leads to overfitting, lack of trust, bias, etc.
+Instead, collect data, create a causal graph, build a structural causal model.
+This approach is less prone to spurious correlations, existence of confounders is
+clearer, explainable \emph{ex ante}, etc.
+
+How can we infer a causal
+graph, i.e., a directed acyclic graph (DAG)?
+E.g., controlled interventions, observational data, domain knowledge, or all three.
+Causal discovery.
+Reichenbach's common cause principle.
+It's hard to fully automate causal discovery.
+$A$ could cause $B$, vice versa, $C$ could cause both, or the correlation could be spurious.
+Full-graph causal discovery: entirely from observational data.
+Avoid expensive interventions, i.e., randomized controlled trials (RCTs).
+How can we infer causal DAGs in practice?
+Can introduce some human domain knowledge.
+E.g., constraints and inductive biases we want to enforce, classes of relationships
+between variables, the type of noise.
+Causal sufficiency, faithfulness, positivity, tiers.
+This can be an interactive process -- human-guided causal discovery, in between fully
+automated and human-drawn.
+The main causal discovery methods are constraint-based (conditional independence
+tests); score-based (evaluate e.g. with Bayesian information criterion); and continuous
+optimization (functional learning).
+\textcites{Kleinegesse2022} -- reduce computational expense and graph sizes by pruning
+graph according to known and forbidden edges (causal relationships)
+
+How to estimate the treatment effect?
+Instrumental variables; propensity score matching; back/front-door adjustment criteria;
+structured causal models (SCMs), etc. are unified under the name `do-calculus'.
+Pragmatic approach: speed up algorithms and use domain knowledge, which helps adoption,
+interpretability, etc. What is a structured causal model?
+See, e.g., \textcites{Peters2017a}.
+Exogenous, hidden/unobserved variables that we suppose are causing observed variables.
+More informative than a predictive model.
+Causal modelling and moving beyond predictions: CausalNet, doubly robust ML.
+causaLens provide the only implementation of SCMs with doubly-robust training.
+The advantages with respect to traditional machine learning are that it's intrinsically
+explainable and easier to debias, whereas techniques like LIME and SHAP are approximate
+and post hoc.
+Post-hoc explanations aren't trustworthy or human friendly, and they're generated too
+late in the process.
+
+Algorithmic recourse: what to do to produce a specific outcome?
+causaLens provide the only enterprise implementation of the method from this paper.
+E.g., in healthcare, analysis of controversial TOPCAT trial \parencites{Raimondi2022}.
+This trial was controversial because the results varied widely by region.
+Complex trials are difficult with traditional statistical analysis, particularly for
+multi-site clinical trials.
+We demonstrate regional differences in causal mechanisms.
+
+Causality is important with respect to compliance with stricter regulations.
+Traditional AI struggles with fairness, e.g., it can find proxies to protected
+attributes, which means that removing protected variables doesn't ensure fairness.
+We can divide variables into groups based on whether they're valid explanatory
+variables.
+Fairness metrics, disparate outcomes versus treatment (equality and equity).
+One way to certify fairness is counterfactually: i.e., if $X$ had been $Y$, would the
+decision have been the same?
+See \textcites{Raimondi2022a}.
+LLMs -- productivity tool i.e. suggests things to data-scientist operators.
+Can use causal graph as context for the LLM to help prevent hallucinations etc. What
+about variables that aren't labelled or meaningful?

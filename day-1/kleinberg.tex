@@ -1,0 +1,92 @@
+\addsection{Learning Causes and Using Them}
+\sectionauthor[]{Samantha Kleinberg}
+\begin{affils}
+  \sectionaffil[]{Stevens Institute of Technology}
+\end{affils}
+
+Photo of a neurological intensive care unit (ICU).
+Most ICUs don't store data, or don't store it electronically.
+It's difficult to argue that it's valuable to capture that data without access to it.
+There's something of a trend in AI to not concern ourselves with \emph{why} something
+works.
+However, papers commonly use a lot of causal language, despite their ostensible lack of
+interest in causality \parencites{Cofield2010}{Han2022}.
+Generally, papers use causal language in the abstract and discussion but not elsewhere!
+Perhaps causality is a desirable property that it's valuable to pretend you have.
+
+Alarm fatigue: the more alerts you get, the less likely you are to pay attention to
+them.
+In the context of healthcare, patients and doctors really want to know why something is
+happening and what they can do about it -- action requires causality.
+How can we extract causal information from data?
+What about when we can't intervene or control what data is recorded?
+
+We looked at the causal structure of brain physiology following a brain injury
+\parencites{Claassen2016}.
+The model is very complicated and includes a lot of dependencies on time, but it
+doesn't capture anything that wasn't explicitly measured.
+Doctors wanted a simulation system to test the effects of interventions.
+We thought we needed causal models to help experts to make decisions and take actions,
+but when we produced a causal model, it wasn't useful to them.
+As scientists, we're pleased when we come up with a comprehensive diagram, but then
+people use the complicated diagrams to demonstrate why a policy is unworkable.
+Are these kinds of models actually useful for decision-making?
+
+There isn't much evaluation in the ML and AI community regarding causal
+representations.
+There are positive results in psychology on how children learn causal models.
+Can causal information aid decision-making in familiar scenarios?
+We presented people with the same textual information and, in some cases, a causal
+model -- it's like an `open-book exam', i.e., we assumed that people already had the
+model somehow.
+But people did worse with the text and/or diagram \parencites{Zheng2020}.
+`Open-book exam', assume people already have the causal model.
+People did worse with the text and/or diagram!
+What if we change what people think they know?
+\parencites{Kleinberg2020}.
+Dual-process theory (system-1 and system-2).
+Once it becomes familiar, the causal model is unhelpful.
+It's not that people don't have a causal model internally, but that they already have
+something that's difficult to explain and not necessarily reconcilable with an external
+model.
+
+How do you focus people's attention?
+We tried tailoring diagrams to the question, i.e., to only show the causal paths that
+are relevant \parencites{Kleinberg2021}.
+Simpler diagrams improved people's performance.
+Causal chains: intervene on roots versus direct causes.
+E.g., showing that `seeing food ads' leads to `not eating healthy' makes people more
+likely to choose `fast-forward through ads' as a response to how to lose weight.
+We found the same effect by highlighting the relevant parts of the model rather than
+removing the rest of it.
+We tried letting people choose what information they would find useful -- more
+information leads people to overthink.
+
+What causes do algorithms find?
+Stronger causes, earlier causes, modifiable factors.
+Are some causes more valuable than others?
+We don't typically optimize for these, which is important given that we can only give
+people so much information if they're going to use it effectively.
+A complete model is not always a useful one.
+We have done some work to investigate how the strength of causal relations influences
+people's decisions, but it's non-trivial to indicate the strength of relationships
+visually.
+
+\paragraph{Questions}
+Is there a difference between causal and predictive models?
+How does causality relate to the aims of explainable AI and interpretability?
+
+Steven Sloman: Does providing causal knowledge help people reason about things?
+Do nodes and links specifically help people?
+We found that using nodes and links helps people to agree on an overall model.
+Physicians tend to be experts in a narrow domain, so that framework is useful for
+integrating and representing their combined knowledge.
+Showing the nodes and links doesn't help people reason all that much, even though
+they're good at reasoning locally.
+But maybe it does help at a collective level.
+Samantha Kleinberg: We don't think the result is due to the diagrammatic form only, we
+find the same with text.
+Information conflicts with people's pre-existing knowledge and/or it isn't easy for
+people to combine it with their own.
+We tried eliciting mental models from people, but it's difficult to get things that are
+more complex or consistent with people's decision-making.

@@ -1,0 +1,91 @@
+\addsection{Causality Beyond Shannon}
+\sectionauthor[]{Stefan Leijnen}
+\begin{affils}
+  \sectionaffil[]{University of Applied Sciences Utrecht}
+\end{affils}
+
+Shannon entropy underpins most, if not all, AI.
+It `brackets out' the causality of the processes that underlie the creation of the
+probability distribution.
+This was explicitly mentioned in \citetitle{Shannon1948}: ``Semantic aspects of
+communication are irrelevant to the engineering problem.
+'' \parencite*{Shannon1948}.
+Selecting from among the possible messages.
+This idea treats information as a substance rather than a relation: quantifiable but
+without semantics (`aboutness').
+`Aboutness' is the presupposed relation between the source and destination that makes the
+signal \emph{useful}.
+The `bracketing out' of this relation yields the `semantic debt' of modern-day AI,
+which leads to problems with understanding, alignment, and safety.
+Where does this presupposed relation come from?
+
+Aristotle on causality (Phys II and Metaph V).
+Understanding reality requires causal knowledge, yielded by causal investigation.
+The study of existence looks for why something is created and destroyed and why it is.
+Aristotle distinguishes between intrinsic and coincidental causes: material, formal,
+efficient, and final causes.
+The material cause is compositional.
+Causality is about understanding the regularities and habits that underpin `goodness',
+i.e., quality or suitability.
+Interestingly, Aristotle considers these four causes to be irreducible but ordered,
+i.e., the final cause offers the best explanation.
+We tend to observe that final causes are formal, and tend to conflate them.
+That is, we ignore the processes that underpin the relation that's explained by final
+causality, or explain them in terms of formal and efficient causes.
+We focus on the substance rather than the purposeful relation.
+
+There is good reason for science to mistrust teleological explanations, due to fear of
+the theological connotations.
+With respect to AI, \emph{telos} as objective, coincidence as randomness.
+Substrate-independent information processing where the underlying thermodynamics and
+synchronicity are abstracted away leads to technology that is not grounded in reality
+beyond the efficient but thin causal link with transistors.
+We try to do away with the causal link to model the others.
+So we need to study the mechanisms of primary causes, e.g., what the final causal
+relation is about: what are the physical properties that underpin the
+regularities/synchronicities of the model.
+
+The CAUSE research programme, established 2021, aims to `explore different
+socioeconomic gardens for AI to blossom'.
+It is named for: Creativity, Autonomy, Understanding, Sentience, Ethics.
+Projects: mechanisms of final causality; convivial AIs; causal reasoning through
+constrained learning.
+
+\addsection{Operationalization of Steerable Kernels:\\Causal Reasoning Through Constrained Learning}[Operationalization of Steerable Kernels][{Operationalization of Steerable Kernels: Causal Reasoning Through Constrained Learning}]
+\sectionauthor[]{Coert van Gemeren}
+\begin{affils}
+  \sectionaffil[]{University of Applied Sciences Utrecht}
+\end{affils}
+
+The steerability of equivariant kernels is a powerful concept to extend the notion of
+translation equivariance to Euclidean and non-Euclidean geometries
+\parencites{Weiler2019}{Cesa2022}.
+Geometric deep learning: with regular convolution, rotation invariance only comes from
+data augmentation.
+A model is \emph{invariant} if a group action on the domain results in the same
+activation in the co-domain.
+A model is \emph{equivariant} if the result of the operation is the same when actions
+are applied on the domain and co-domain.
+G-steerable kernels constrain the representation space to outcomes computable by the
+steering operation (G-action).
+An affine roto-translation steerable kernel constrains the kernel representation in
+Euclidean space to the precise rotations allowed by the affine rotation matrix.
+Invariance is a special case of equivariance when the action on the co-domain is the
+identity.
+
+Constraints help align a CNN to a geometrical goal.
+Discretely computable outcomes for a specific degree of freedom of the kernels.
+\textcites{Weiler2019} show that a G-steerable kernel guarantees invariance of neuronal
+activation for equivalent samples.
+What about other domains, e.g., color, age, and gender?
+Fairness constraints.
+But it's difficult to create a kernel to morph data to represent different ages.
+We can consider causality as a stack of steerable operations.
+We can stack translation-equivariant layers in a CNN, so perhaps we could model causal
+reasoning through operationalization of features in a stack of kernels.
+The `Causal reasoning' space could be constrained to find valid chains of causes and
+effects.
+Instead of optimization, we could find models tailored to utility due to ethical
+considerations.
+Is there a relationship to analogical relationships in embedding spaces?
+Objective functions are a simple proxy for the utility of a model.

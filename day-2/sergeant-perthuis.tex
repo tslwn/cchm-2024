@@ -1,0 +1,83 @@
+\addsection{Challenges and Prospects for the Projective Consciousness Model}
+
+\sectionauthor[]{Grégoire Sergeant-Perthuis}
+\begin{affils}
+  \sectionaffil[]{LCQB, Sorbonne Université}
+\end{affils}
+
+Phenomenological aspects of consciousness, computational phenomenology.
+Consciousness involves a subjective perspective, characterized by viewpoint-structured
+organization, a sense of unity (holistic), embodiment, and an internal representation
+of the world in perspective from a specific standpoint.
+K Williford's MoC4 presentation.
+
+Goals: implement a subjective perspective for synthetically adaptive agents; in a way
+compatible with axioms of consciousness (Alexander's axioms).
+Rudrauf, Williford, Bennequin, Friston.
+Mathematical model of embodied consciousness 2017; projective consciousness and
+phenomenal selfhood 2018; moon illusion explained by the projective consciousness model
+2020.
+
+A step towards robotics.
+World models, recalling the Bayesian brain hypothesis: adaptive systems have evolved to
+preserve their integrity, which necessitates the prediction of environmental behaviour.
+By forming hypotheses about the world and updating with new observations, to assist in
+decision-making on how to act.
+Friston active inference FKH06 DPS+20; Markov decision process and partially-observed.
+Imbuing perspective-taking in social agents.
+Plan in the future with respect to a prioris in environment.
+
+Problem: associating actions and movement with perspective-taking (projective
+transformation).
+Subproblem: how to relate configuration and projective perspectives on the environment.
+Impose a set of axioms in the agent's frame of reference.
+Centre the subject after the transformation.
+Preserve axes of Euclidean frame associated with the agent.
+No points appear to be truly at infinity, only when subject directly represents a half
+space.
+Objects near to the agent have the same size in Euclidean frame.
+
+Axioms impose a set of projective transformations.
+Rudrauf et al 2022a, 2022b.
+
+Model maladaptive behaviours.
+Imagination and empathy: take others' perspective; simulate it.
+Big claims but in a restricted setting.
+
+Group-structured world models: incorporate actions and `perspectives' of agents within
+the agent's internal space.
+Reconstruct sensory input.
+A way to put your own actions in the geometry of the space.
+Plan the way you're moving inside of your space and how it will affect the world.
+Think of it as a group acting on the space.
+
+Rudrauf et al 2023.
+
+What changes with respect to classical perspective?
+POMDP don't have complete knowledge of environment via observations.
+Specialization of POMDP: some actions relating to the agents, over which the agent has
+control, affect its state space.
+
+Euclidean vs projective case changes the behaviour of the agent to find an object.
+Get closer to get more evidence about where object is.
+Don't add any drive other than curiosity (mutual information).
+
+POMDP is a particular form of causal model.
+Group-structured world models are a form of inductive bias.
+Equivariance to symmetries of objects that allow better prediction and action planning.
+
+Challenges: difficult to have exact filtering and planning with theoretical guarantees.
+Approximate method can be simplified.
+Optimizing over possible group actions is also challenging, example learning by maximal
+likelihood.
+How to learn the possibility of taking different perspectives on the data?
+
+Bayesian network: factorizing of probability distributions over variables (factor
+graph, Markov random field).
+Each variable is assumed to have a group acting on it, but the action is undetermined.
+Fixed DAG but not forcing probability distributions on it.
+Assumption about how group acts on model.
+Composing action of group on factorized probability distribution.
+
+Deep learning -- learn group-invariant transformations.
+Not trying to be invariant \emph{to} something.

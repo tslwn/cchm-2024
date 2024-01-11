@@ -1,0 +1,147 @@
+\addsection{Passive Inference is Compositional, Active Inference is Emergent}[Passive and Active Inference]
+
+\sectionauthor[]{Jules Hedges}
+\begin{affils}
+  \sectionaffil[]{University of Strathclyde}
+\end{affils}
+
+\newcommand{\period}{.}
+
+Joint work with Toby St\period{}Clere Smithe.
+Hedges's second affiliation is the CyberCat institute non-profit for research into
+applied category theory.
+
+\subsection*{Markov kernels}
+
+A Markov kernel $\phi : X \to Y$ is a conditional probability distribution $\phi(x)$ on
+$Y$ given $x \in X$: $\mathbb{P}_\phi\left[y \mid x\right]$.
+
+You can compose these things together.
+Markov kernels compose by integrating out the middle variable.
+We call this composite Markov kernel `phi then psi'.
+These are hard to compute exactly, because integration in high-dimensional spaces is
+hard.
+But they're easy for Monte-Carlo simulation.
+
+A special case is that, given a distribution $\pi : 1 \to X$, the pushforward
+distribution $\pi \phi : 1 \to Y$ is the distribution on $Y$ that you get by sampling
+from $\pi$ and then applying $\phi$.
+
+\subsection*{Bayesian inversion}
+
+Suppose we observe a specific output $y$ of $\phi$ but we did not see the input $x$.
+Need to have some prior belief, i.e., the distribution that the inputs are being drawn
+from.
+Bayes's theorem tells us how to update prior belief to get the posterior belief.
+Also hard to compute and also hard for MC simulation.
+
+For a fixed prior $\pi$, this defines a Markov kernel $\phi_\pi^\dagger : Y \to X$,
+called the Bayesian inverse:
+\begin{equation}
+  \mathbb{P}_{\phi_\pi^\dagger} \left[ x \mid y \right] = \mathbb{P}_\pi \left[ x \mid \phi(x) = y \right]
+\end{equation}
+Hedges considers Jeffrey's rule the proper application of Bayes's theorem.
+The two are commonly conflated in the literature (see previous talk).
+This depends on $\pi$ in a non-linear way.
+Jeffrey's rule is efficient because it's linear.
+This is why fixing $\pi$ was useful.
+
+\subsection*{The Bayesian chain rule}
+
+Can we relate the Bayesian inverse of a composite kernel to the Bayesian inverses of
+the single kernels?
+
+Theorem (Smithe):
+\begin{equation}
+  (\pi; \phi)_\pi^\dagger = \psi_{\pi; \phi}^\dagger; \phi_\pi^\dagger
+\end{equation}
+
+Bayes's theorem is for `sharp' evidence, whereas Jeffrey's and Pearl's are for `fuzzy'
+evidence.
+This gives a posterior distribution as an output, so I'm doing a Jeffrey's update on
+$\phi$.
+I consider this good evidence that Jeffrey's rule is `right'.
+Maybe there's a similar single formula for Pearl's rule.
+There's no evidence; this is just a fact about Bayes's theorem.
+
+This tells us that we could compute posteriors in a compositional way: it's easy if
+we've already solved the sub-problems.
+I.e., if we can already invert the sub-kernels, we can efficiently invert the whole
+thing.
+Smithe wrote a general proof that works for a subset of Markov categories.
+This seems to be folkloric, i.e., lots of people know it, but it doesn't appear in the
+literature.
+
+Compare the reverse-mode chain rule for the transpose Jacobian of smooth functions that
+underlies backpropagation.
+
+\subsection*{Lenses and perception}
+
+It's useful to package up a kernel $\phi : X \to Y$ and an indexed family of kernels
+into a single entity (process).
+We call this a Bayesian lens from X to Y: $(\phi, \phi^\prime) : X \to Y$.
+Lenses can be composed by a chain rule.
+The general idea is that lenses point down the perceptual hierarchy, from higher- to
+lower-level descriptions.
+$\phi$ is the prediction kernel: it converts a higher-level belief into a lower-level prediction.
+$\phi^\prime_\pi$ is the inference (Bayesian inverse) kernel: it converts a lower-level observation into a posterior higher-level belief.
+Lens composition tells you how to do prediction and inference through many layers of
+abstraction.
+
+\subsection*{Approximate inference}
+
+The previous discussion concerned \emph{exact} inference.
+It's common to replace $\phi^\prime_\pi$ with a parameterized functional form
+$\phi^\prime(\theta)$ for some parameters.
+The goal is to learn $p$ so that $\phi^\prime_\pi(\theta) \to \phi_\pi^\dagger$.
+The general way to do this is to find a loss function that's minimized by the exact
+Bayesian inverse.
+There are several ways to do this, e.g., variational free-energy minimization.
+
+The general shape of the algorithm is to take an input $x$, assumed to be distributed
+according to some prior; input an observation $y^\prime$, assumed to be distributed
+according to some conditional.
+The sample and output $x^\prime$ from $\mathbb{P}_{\phi_\pi^\dagger} \left[ x \mid
+    y^\prime \right]$.
+Then update the prior to $\mathbb{P}_{\phi_\pi^\dagger} \left[ x^\prime \mid y^\prime
+    \right]$.
+Finally, given $(x, y^\prime, x^\prime)$, update $p$ by your favourite formula.
+
+\subsection*{Deep inference}
+
+Does the chain rule still work for approximate inference?
+The theorem above is for exact inference.
+Conjecture: if we asynchronously learn $p$ and $q$ then:
+\begin{equation}
+  \psi_{\pi; \phi}^\dagger(q); \phi_\pi^\dagger(p) \to (\phi; \psi)_\pi^\dagger
+\end{equation}
+Variational free energy fails to be compositional in the `nicest' way.
+\begin{equation}
+  \text{FE}(\psi_{\pi; \phi}^\dagger(q); \phi_\pi^\dagger(p)) =
+  \text{FE}(\phi_\pi^\dagger(p)) +  \text{FE}(\psi_{\pi; \phi}^\dagger(q)) + \text{cross term}
+\end{equation}
+It's trivially true if we do backward induction: first hold $p$ and learn $q$ to
+convergence, then learn $p$ to convergence.
+Want to do these asynchronously so it can be in parallel.
+By analogy with deep learning, I propose to call this `deep inference'.
+
+Active inference is emergent.
+Everything so far is holding the prediction kernel constant (stationary).
+You could call this \emph{passive} inference.
+We think that if you change that, this stops being true.
+Non-stationary prediction kernels break compositionality.
+
+Conjecture: if $\phi(p) \to \phi$, then in general we do not have\dots In particular,
+we believe that this fails for active inference.
+To put a positive spin on this: active inference exhibits emergent behaviour.
+It behaves differently to the sum of its parts.
+A system doing active-inference compositionally can fail to converge to true beliefs,
+even in a stationary environment.
+Each piece of it is not in a stationary environment.
+
+The hope is that you can do this extremely efficiently.
+Online learning is hard.
+Banking on doing this in real time.
+
+Hot take: this is an interesting model of how the cortex works.
+The cortex is compositional according to this formalisation, through long hierarchies.

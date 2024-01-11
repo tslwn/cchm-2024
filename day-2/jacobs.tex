@@ -1,0 +1,170 @@
+\addsection{How Does the Human Update?
+  Via Pearl or via Jeffrey?
+}[Pearl and Jeffrey]
+
+\sectionauthor[]{Bart Jacobs}
+\begin{affils}
+  \sectionaffil[]{Radboud University Nijmegen}
+\end{affils}
+
+\subsection*{About Pearl and Jeffrey}
+
+Pearl (1989) presented challenges in probabilistic logic, who was one of the founders
+of the field.
+There is a cultural difference between logic and probability theory.
+Embarrassingly, there is no probabilistic logic for symbolic reasoning.
+Update rules should form a part of such a logic.
+Update rules are difficult in traditional, monotonic logic, where adding more
+information cannot make a true statement become false.
+We need to switch to a likelihood-based view, i.e., one that is fuzzy instead of
+`sharp'.
+
+The outdated view of learning is that it is a process of adding information.
+Alternatively, predictive coding theory (Fristol et al.
+) supposes that the mind continually
+makes predictions and compares them to the actual outcomes.
+Then, updates occur in response to mismatches between the two (prediction errors).
+The underlying idea is that the brain is a Bayesian prediction and correction engine.
+But Jacobs's intuition is that it would be more appropriate to call the brain a
+Jeffreyan engine.
+
+There are two update rules (Pearl/Bayes) and Jeffrey, which aren't well-distinguished
+in the literature.
+They both have clear formulations using channels.
+Unclear when to use each of them.
+Mathematically non-trivial but it's intriguing to wonder whether the mind uses one or
+the other within predictive coding theory.
+Cognitive science may provide an answer to this.
+
+Papers: Bart Jacobs 2019, MFPS 2021, MFPS 2023.
+
+E.g., a medical test has a certain sensitivity and specificity.
+Computing the predictive positive test probability gives an unintuitive result.
+What if the test is performed in unfavourable circumstances?
+What's the disease likelihood i.e. the posterior?
+Pearl and Jeffrey's rules give significantly different results!
+This makes people uncomfortable.
+
+This relates to multiple test results as well as uncertain test results.
+Pearl's approach doesn't scale to many tests (without a conjugate prior situation).
+A possible interpretation for the difference: Pearl is about tests for an individual,
+whereas Jeffrey is about tests for a population, with different individuals.
+
+\subsection*{Zooming out}
+
+These update rules as optimisations.
+
+Pearl's rule uses evidence (predicate) to update a prior to a posterior, such that the
+validity (expected value) of the evidence increases.
+Formally: the validity of the evidence in the prediction based on the posterior is
+higher than in the predication based on the prior.
+
+Jeffrey's rule uses an observed distribution/state to update form prior to posterior,
+such that the mismatch with the observation decreases.
+Formally: the KL-divergence between the observation and the prediction based on the
+posterior is lower than on the prior.
+
+Jeffrey's rule reduces prediction errors, as in predictive coding.
+
+Comparisons:
+\begin{itemize}
+  \item Pearl's rule increases what's right (effect); you learn nothing from uniformity (no differences); successive updates commute.
+  \item Jeffrey's rule decreases what's wrong; you learn nothing from what you already know (predict); successive updates don't commute.
+\end{itemize}
+
+Big question: does the human mind use one or the other?
+Bet is on Jeffrey but don't have any evidence for it.
+Maybe it's a combination or varies under different circumstances.
+But what are the circumstances?
+We're sensitive to the order in which we receive information (priming).
+
+\subsection*{Underlying mathematics}
+
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+
+Mathematics: distributions (finite and discrete).
+A distribution or state over a set $Z$ is a formal finite convex sum:
+\begin{equation*}
+  \sum_{z \in Z} p(z) \ket{z} \text{where} \sum_{z \in Z} p(z) = 1 \text{and} p(z) \geq 0.
+\end{equation*}
+Distributions can also be described as functions to 0 1 with finite support and sum 1.
+Distribution monad on sets.
+Kleisli map is also called a channel, and written as $p \colon X \to Y$.
+Channels condition probabilities in a graphical calculus.
+Symmetric monoidal categories.
+Kleisli extension.
+Distribution on X and a distribution on Y.
+Also called bind, state extension.
+
+Use sets $D = \{d, d^\top\}$ for disease or not and $T = \{p, n\}$ for positive or
+negative test outcomes.
+The prevalence state or distribution is a prior that's a combo of the two.
+Testing is done via the channel test.
+Captures sensitivity and specificity.
+The predicted test distribution.
+
+Divergence between states.
+For $\omega, \rho \in \mathcal{D}(X)$, the KL-divergence is
+\begin{equation*}
+  \text{KL}(\omega \mid \rho) = \sum_{x \in X} \omega(x) \log \frac{\omega(x)}{\rho(x)}.
+\end{equation*}
+It's a standard way to compare states.
+Basic divergence properties, not symmetric, etc.
+
+We also need
+predicates and transformations.
+A predicate on a set $Z$ is a function $\rho \colon Z \to \{0, 1\}$.
+Each subset forms a sharp predicate via the indicator function.
+Also have point predicates determined by an element.
+Given a channel and a predicate, you can define a predicate transformation.
+State transformation goes forward (direction of arrow) and predicate transformation
+goes backwards.
+
+Validity and conditioning.
+Expected value: sum over all the probabilities and values of the predicate.
+If the expected value is non-zero, define the conditional distribution.
+Normalized product of w and p.
+Incorporating evidence into distribution.
+
+Results about validity.
+Validity and transformations: for a channel $c : X \to Y$, state $\sigma$ on $X$, and a
+predicate $q$ on $Y$\dots Validity increase\dots By incorporating evidence, the result
+becomes more true.
+The notation is clumsy in the literature, and they don't have a way of expressing it.
+Hence, the new notation.
+
+The `dagger' of a channel: Bayesian inversion.
+Assume a channel and a state.
+For an element on the codomain of the channel: form the point predicate, its
+transformation as a predicate on X, and the updated state.
+Define this to be an inverted channel or dagger.
+Depends in the probabilistic case on the prior.
+Dagger functor.
+
+Pearl and Jeffrey, formulated via channels (JAIR 2019).
+Set up a channel with a prior state on the domain.
+Evidence on Y that we want to update to use sigma.
+Pearl's update rule: evidence is a predicate on Y, update state.
+Jeffrey's update rule: evidence is a state.
+Turn around the channel and do state transformation that way.
+
+Main optimization rules: Pearl increases validity.
+Jeffrey decreases divergence.
+The proof of Pearl is easy but for Jeffrey it's remarkably hard.
+Jeffrey's KL decrease is missing in the predictive-coding literature, although it forms
+the basis of error reduction.
+Is this the result that underpins it?
+
+\subsection*{Conclusions}
+
+Concluding remarks: updating is magic, pillar of AI revolution, requires a proper
+logic.
+Different update rules give wildly different outcomes but aren't well distinguished in
+the literature.
+Clear formulations in terms of channels.
+
+EM and LDA decrease divergence via Jeffrey's rule.
+Extensions to continuous or quantum settings are next steps.
+Connecting to cognition-theory community!
+
+Jeffrey's rule underpinning things, but people don't necessarily know that.

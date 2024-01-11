@@ -1,0 +1,99 @@
+{
+  "black-formatter.args": ["--line-length", "88"],
+  "files.exclude": {
+    "**/*-blx.bib": true,
+    "**/*.aux": true,
+    "**/*.auxlock": true,
+    "**/*.bbl": true,
+    "**/*.bcf": true,
+    "**/*.blg": true,
+    "**/*.dep": true,
+    "**/*.dpth": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    "**/*.idx": true,
+    "**/*.ilg": true,
+    "**/*.ind": true,
+    "**/*.loe": true,
+    "**/*.log": false,
+    "**/*.md5": true,
+    "**/*.nav": true,
+    "**/*.out": true,
+    "**/*.run.xml": true,
+    "**/*.snm": true,
+    "**/*.synctex.gz": true,
+    "**/*.synctex(busy)": true,
+    "**/*.toc": true
+  },
+  "latex-workshop.latex.recipe.default": "lastUsed",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "pdflatex -> bibtex -> pdflatex * 2",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "--shell-escape",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "command": "latexmk",
+      "env": {},
+      "name": "latexmk"
+    },
+    {
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "--shell-escape",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "command": "pdflatex",
+      "env": {},
+      "name": "pdflatex"
+    },
+    {
+      "args": ["%DOCFILE%"],
+      "command": "bibtex",
+      "env": {},
+      "name": "bibtex"
+    }
+  ],
+  "latex-workshop.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-l=%WORKSPACE_FOLDER%/latexindent.yaml",
+    "-m"
+  ],
+  "latex-workshop.texcount.args": ["-merge %DOC%"],
+  "ltex.latex.commands": {
+    "\\cite{}": "dummy",
+    "\\cite[]{}": "dummy",
+    "\\cref{}": "ignore",
+    "\\documentclass[]{}": "ignore",
+    "\\label{}": "ignore",
+    "\\nameref{}": "ignore",
+    "\\newcommand{}": "ignore",
+    "\\newlength{}": "ignore",
+    "\\parencref{}": "ignore",
+    "\\pgfplotsset{}": "ignore",
+    "\\pgfplotstableset{}": "ignore",
+    "\\pgfplotstabletypeset[]{}": "ignore",
+    "\\pgfplotstabletypeset[]": "ignore",
+    "\\pgfplotstabletypeset{}": "ignore",
+    "\\ref{}": "ignore",
+    "\\settowidth{}": "ignore"
+  }
+}
